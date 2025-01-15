@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from empleados.views import EmpleadoViewSet
+from django.http import HttpResponse
+def home(request):
+    return HttpResponse("Bienvenido a la página principal de la aplicación.")
+
 
 router = DefaultRouter()
 router.register(r'empleados', EmpleadoViewSet)
@@ -25,6 +29,6 @@ router.register(r'empleados', EmpleadoViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    
+    path('', home),  
 ]
 
